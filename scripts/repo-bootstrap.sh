@@ -1,7 +1,9 @@
 #/bin/bash
 
 header() {
+    echo
     echo ====== $1
+    echo
 }
 
 rm -rf repo
@@ -35,8 +37,12 @@ pip --quiet download --destination-directory ${pip_repo}/bootstrap -r etc/bootst
 header "downloaded python packages"
 ls ${pip_repo}/bootstrap
 
-wget https://bootstrap.pypa.io/get-pip.py
+wget --quiet https://bootstrap.pypa.io/get-pip.py
 mv get-pip.py ${pip_repo}
 
+spack="${sw_repo}/spack/bin/spack"
 header "setting up the spack bootstrap mirror"
-${sw_repo}/spack/bin/spack bootstrap mirror --binary-packages ${spack_repo}/bootstrap
+${spack} bootstrap mirror --binary-packages ${spack_repo}/bootstrap
+
+header "setting up the spack mirror"
+${spack} spack mirror create -D -d ${spack_repo}/mirror -f ${etc_path}/spack-mirror-specs.txt

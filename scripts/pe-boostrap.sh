@@ -30,3 +30,6 @@ spack bootstrap add --trust local-sources $spack_bootstrap/metadata/sources
 spack bootstrap add --trust local-binaries $spack_bootstrap/metadata/binaries
 
 spack bootstrap status
+
+# setting up spack mirror
+10057  2023-10-06 09:59  spack mirror create -D -d $(pwd)/mirror -f /home/bcumming/test/spack-env/spack-packages.txt
