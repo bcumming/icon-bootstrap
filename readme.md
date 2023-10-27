@@ -56,7 +56,7 @@ chippewa
 ├─ etc
 │  ├─ requirements-bootstrap.txt
 │  ├─ requirements-icon.txt
-│  └─ spack-specs.txt
+│  └─ spack-mirror-specs.txt
 └─ work
    ├─ icon-build
    └─ ...
