@@ -1,0 +1,9 @@
+# icon4py model
+./model/atmosphere/dycore
+./model/atmosphere/diffusion
+./model/atmosphere/advection
+./model/common
+./model/driver
+
+# icon4pytools
+./tools

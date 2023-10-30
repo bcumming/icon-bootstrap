@@ -1,5 +1,9 @@
 # Bootstrapping ICON
 
+## TODO
+
+* ensure that we bring fresh tar balls of spack, uenv, etc that haven't been used (avoid python pollution)
+
 ## High-level overview
 
 * PE building

@@ -23,33 +23,33 @@ pip_repo=$repo_path/pip/icon
 
 rm -rf ${pyenv_path}
 rm -rf ${pip_repo}
-#rm -rf ${icon_repo_path}
+rm -rf ${icon_repo_path}
 
 mkdir -p ${icon_repo_path}
 pushd ${icon_repo_path}
 
     header "cloning and compressing icon-exclaim"
-    #git clone --quiet -b grace-hopper git@github.com:C2SM/icon-exclaim.git
-    #(cd icon-exclaim; git submodule update --quiet --init --recursive)
-    #tar czf icon-exclaim.tar.gz icon-exclaim
+    git clone --quiet -b grace-hopper git@github.com:C2SM/icon-exclaim.git
+    (cd icon-exclaim; git submodule update --quiet --init --recursive)
+    tar czf icon-exclaim.tar.gz icon-exclaim
 
     header "cloning and compressing icon4py"
-    #git clone --quiet git@github.com:C2SM/icon4py.git
-    #tar czf icon4py.tar.gz icon4py
+    git clone --quiet git@github.com:C2SM/icon4py.git
+    tar czf icon4py.tar.gz icon4py
 
     header "cloning and compressing gt4py"
-    #git clone --quiet git@github.com:GridTools/gt4py.git
-    #tar czf gt4py.tar.gz gt4py
+    git clone --quiet git@github.com:GridTools/gt4py.git
+    tar czf gt4py.tar.gz gt4py
 
     header "cloning and compressing gridtools"
-    #git clone --quiet git@github.com:GridTools/gridtools.git
-    #tar czf gridtools.tar.gz gridtools
+    git clone --quiet git@github.com:GridTools/gridtools.git
+    tar czf gridtools.tar.gz gridtools
 
     header "downloading nlohmann"
-    #wget https://github.com/nlohmann/json/archive/refs/tags/v3.10.5.tar.gz -O json-v3.10.5.tar.gz
+    wget https://github.com/nlohmann/json/archive/refs/tags/v3.10.5.tar.gz -O json-v3.10.5.tar.gz
 
     header "cleaning up"
-    #rm -rf icon-exclaim icon4py gt4py gridtools
+    rm -rf icon-exclaim icon4py gt4py gridtools
 popd
 
 #
