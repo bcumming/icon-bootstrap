@@ -35,13 +35,14 @@ source ${uenv_view_path}/activate.sh
 export PATH=${spack_path}/bin:$PATH
 
 rm -rf ${build_path}
-mkdir ${build_path}
+mkdir -p ${build_path}
 
-cd $build_path
+cd ${build_path}
 
 spack --version
 
 echo == unpacking everything in ${build_path}
+echo == $(pwd)
 
 echo "==       ...  icon4py"
 tar xzf ${sources_path}/icon4py.tar.gz

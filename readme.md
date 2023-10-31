@@ -2,8 +2,6 @@
 
 ## TODO
 
-* ensure that we bring fresh tar balls of spack, uenv, etc that haven't been used (avoid python pollution)
-
 ## High-level overview
 
 * PE building
@@ -38,7 +36,12 @@ repo
 └─ software
    ├─ spack             # clone of spack/spack at releases/v0.20
    ├─ stackinator       # clone of eth-cscs/stackinator at v3.0
-   └─ uenv              # clone of eth-cscs/uenv
+   ├─ squashfs-mount    # clone of eth-cscs/squashfs-mount
+   ├─ uenv              # clone of eth-cscs/uenv
+   ├─ squashfs.tar.gz
+   ├─ spack.tar.gz
+   ├─ stackinator.tar.gz
+   └─ uenv.tar.gz
 ```
 
 
@@ -61,8 +64,8 @@ chippewa
 │  ├─ requirements-bootstrap.txt
 │  ├─ requirements-icon.txt
 │  └─ spack-mirror-specs.txt
-└─ work
-   ├─ icon-build
+└─ build
+   ├─ icon
    └─ ...
 ```
 

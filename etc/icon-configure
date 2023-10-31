@@ -58,7 +58,7 @@ CPPFLAGS="-I${uenv_view_path}/include/libxml2 -I${uenv_view_path}/include"
 CXX='mpicxx'
 
 FC='mpif90'
-FCFLAGS="-g -traceback -O -Mrecursive -Mallocatable=03 -acc=verystrict -gpu=cc90 -M -Minfo=accel,inline ${SERIALBOXI} ${ECCODESI} ${NETCDFFI} -D__SWAPDIM -D__USE_G2G -lnvToolsExt"
+FCFLAGS="-g -traceback -O -Mrecursive -Mallocatable=03 -acc=verystrict -gpu=cc90 -Mstack_arrays -Minfo=accel,inline ${SERIALBOXI} ${ECCODESI} ${NETCDFFI} -D__SWAPDIM -D__USE_G2G -lnvToolsExt"
 
 #LDFLAGS="-L${CUDA_HOME}/lib64 -L${ECCODES_ROOT}/lib64 -L${XML2_ROOT}/lib -L${NETCDF}/lib -L${NETCDFMINFORTRAN}/lib"
 LDFLAGS="-L${uenv_view_path}/lib64 -L${uenv_view_path}/lib"

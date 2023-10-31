@@ -35,7 +35,8 @@ mpi_procs_pernode=4
 #
 # blocking length
 # ---------------
-nproma=48
+#nproma=48
+nproma=35000
 nproma_sub=48
 nblocks_c=0
 #
@@ -732,7 +733,8 @@ $DIAGNOSTIC_TOOL_MODULE
 ulimit -s unlimited
 date
 set -x
-/scratch_local/bcumming/software/icon-bootstrap/build/icon/icon-exclaim/build/bin/icon || exit 1
+MPIRUN=/user-environment/linux-ubuntu22.04-neoverse_n1/nvhpc-23.7/openmpi-4.1.6-cfjy4elruhr7d65qafp5nunywxynbj7k/bin/mpirun
+$MPIRUN -n 1 /scratch_local/bcumming/software/icon-bootstrap/build/icon/icon-exclaim/build/bin/icon || exit 1
 #${START} ${DIAGNOSTIC_TOOL} ${DIAGNOSTIC_TOOL_PARAMS} ${MODEL} || exit 1
 set +x
 date

@@ -27,7 +27,6 @@ rm -rf ${icon_repo_path}
 
 mkdir -p ${icon_repo_path}
 pushd ${icon_repo_path}
-
     header "cloning and compressing icon-exclaim"
     git clone --quiet -b grace-hopper git@github.com:C2SM/icon-exclaim.git
     (cd icon-exclaim; git submodule update --quiet --init --recursive)
