@@ -1,0 +1,6 @@
+packages:
+  perl:
+    buildable: false
+    externals:
+    - spec: perl@5.34.0
+      prefix: /usr
