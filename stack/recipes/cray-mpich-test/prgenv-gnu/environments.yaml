@@ -1,0 +1,24 @@
+gcc-env:
+  compiler:
+      - toolchain: gcc
+        spec: gcc@12
+  unify: true
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+  specs:
+  - cmake
+  - fmt
+  - hdf5
+  - ninja@1.11
+  - openblas threads=openmp
+  - python@3.11
+  - py-pybind11
+  - osu-micro-benchmarks@5.9
+  - cuda@12
+  variants:
+  - +mpi
+  - +cuda
+  - cuda_arch=90
+  views:
+    default:

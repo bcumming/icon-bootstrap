@@ -1,0 +1,59 @@
+modules:
+  # Paths to check when creating modules for all module sets
+  prefix_inspections:
+    bin:
+      - PATH
+    lib:
+      - LD_LIBRARY_PATH
+    lib64:
+      - LD_LIBRARY_PATH
+
+  default:
+    arch_folder: false
+    # Where to install modules
+    roots:
+      tcl: /snap/modules
+    tcl:
+      all:
+        autoload: none
+      eccodes:
+        environment:
+          set:
+            ECCODES_DIR: '{prefix}'
+            ECCODES_INCLUDE: '{prefix}/include'
+            ECCODES_VERSION: '{version}'
+      netlib-scalapack:
+        environment:
+          set:
+            NETLIB_SCALAPACK_ROOT: '{prefix}'
+      openblas:
+        environment:
+          set:
+            OPENBLAS_ROOT: '{prefix}'
+      netcdf-c:
+        environment:
+          set:
+            NETCDF_C_ROOT: '{prefix}'
+      hash_length: 0
+      exclude_implicits: true
+      exclude:
+        - '%gcc@11.2.0'
+        - 'gcc %gcc@11.2.0'
+        - autoconf
+        - perl
+        - automake
+        - gnuconfig
+        - ncurses
+        - openssl
+        - ca-certificates-mozilla
+        - zlib
+        - m4
+        - libxcrypt
+        - libiconv
+        - diffutils
+        - hwloc
+        - xz
+        - libxml2
+        - numactl
+      projections:
+        all: '{name}/{version}'

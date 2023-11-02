@@ -1,6 +1,19 @@
 packages:
+  patchelf:
+    require: "@:0.17"
   perl:
     buildable: false
     externals:
     - spec: perl@5.34.0
       prefix: /usr
+  libfabric:
+    buildable: false
+    externals:
+    - spec: libfabric@1.15.2.0
+      prefix: /scratch_local/bcumming/install/libfabric
+  slurm:
+    buildable: false
+    externals:
+    #- spec: slurm@20-11-9
+    - spec: slurm@23-02-5
+      prefix: /scratch_local/bcumming/install/slurm
