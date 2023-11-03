@@ -5,6 +5,9 @@ nvidia:
       - toolchain: llvm
         spec: nvhpc
   unify: true
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
   specs:
   - cmake%gcc
   - libtree%gcc
@@ -17,9 +20,11 @@ nvidia:
   - netcdf-cxx4%gcc
   - netcdf-fortran@4.5.4%nvhpc
   - boost%gcc
-  - openmpi@4.1.6%nvhpc +cuda fabrics=ucx schedulers=auto
-  - ucx@1.14.1%gcc +rdmacm +cma +verbs +dm +optimizations +gdrcopy ~assertions ~debug
+  #- openmpi@4.1.6%nvhpc +cuda fabrics=ucx schedulers=auto
+  #- ucx@1.14.1%gcc +rdmacm +cma +verbs +dm +optimizations +gdrcopy ~assertions ~debug
   # below are libraries that we explicitly force to use %gcc
+  # papi with cuda, nvml and "software defined events"
+  - papi%gcc +cuda +nvml +sde
   - autoconf%gcc
   - automake%gcc
   - ca-certificates-mozilla%gcc

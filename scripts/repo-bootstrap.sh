@@ -22,7 +22,7 @@ quiet_clone() {
 
 # SHORT CIRCUIT SO THAT WE DON'T BORK anything
 header "do nothing - edit the script to proceed with installation"
-exit
+#exit
 
 repo_path=$(pwd)/repo
 sw_repo=${repo_path}/software
@@ -37,13 +37,6 @@ penv_path=$(pwd)/.pyenv-bootstrap
 # create a fresh python venv every time
 rm -rf ${penv_path}
 
-# nuke all of the software packages
-rm -rf ${sw_repo}/*
-
-# remove the spack bootstrap path
-spack_bootstrap=${spack_repo}/bootstrap
-rm -rf "${spack_bootstrap}"
-
 header "creating python virtual environment in .pyenv-download"
 python3 -m venv ${penv_path}
 source ${penv_path}/bin/activate
@@ -51,22 +44,27 @@ source ${penv_path}/bin/activate
 pip --quiet install pip --upgrade
 
 sleep 1
+# rm -rf ${sw_repo}/*
 mkdir -p ${sw_repo}
 pushd ${sw_repo}
-    git config --global advice.detachedHead false
-    quiet_clone "eth-cscs"        "stackinator" "v3.0"
-    quiet_clone "spack"           "spack"       "v0.20.2"
-    quiet_clone "eth-cscs"        "uenv"
-    quiet_clone "eth-cscs"        "squashfs-mount"
-    quiet_clone "eth-cscs"        "ault-gh"
-    quiet_clone "eth-cscs"        "alps-cluster-config"
-    quiet_clone "bcumming"        "node-burn"
-    quiet_clone "simonpintarelli" "stackinator-mpich-pkgs"
+
+   # git config --global advice.detachedHead false
+   # quiet_clone "eth-cscs"        "stackinator" "v3.0"
+   # quiet_clone "spack"           "spack"       "v0.20.2"
+   # quiet_clone "eth-cscs"        "uenv"
+   # quiet_clone "eth-cscs"        "squashfs-mount"
+   # quiet_clone "eth-cscs"        "ault-gh"
+   # quiet_clone "eth-cscs"        "alps-cluster-config"
+   # quiet_clone "bcumming"        "node-burn"
+   # quiet_clone "simonpintarelli" "stackinator-mpich-pkgs"
 popd
 
 header "downloading the bootstrap python dependencies"
 pip --quiet download --destination-directory ${pip_repo}/bootstrap -r ${etc_path}/bootstrap-requirements.txt
 pip --quiet download --destination-directory ${pip_repo}/bootstrap wheel cython
+
+#exit
+exit
 
 header "downloaded python packages"
 ls ${pip_repo}/bootstrap
@@ -74,10 +72,14 @@ ls ${pip_repo}/bootstrap
 wget --quiet https://bootstrap.pypa.io/get-pip.py
 mv get-pip.py ${pip_repo}
 
+spack_bootstrap=${spack_repo}/bootstrap
+# remove the spack bootstrap path
+#rm -rf "${spack_bootstrap}"
+
 spack="${sw_repo}/spack/bin/spack"
 header "setting up the spack bootstrap mirror in ${spack_bootstrap}"
 header "        using spack: ${spack}"
 time ${spack} bootstrap mirror --binary-packages ${spack_bootstrap}
 
 header "setting up the spack mirror"
-#time ${spack} -C /user-environment/config mirror create -d ${spack_repo}/mirror -f ${etc_path}/spack-mirror-specs.txt
+time ${spack} -C /user-environment/config mirror create -d ${spack_repo}/mirror -f ${etc_path}/spack-mirror-specs.txt
