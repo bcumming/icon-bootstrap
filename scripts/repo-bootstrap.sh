@@ -57,6 +57,11 @@ pushd ${sw_repo}
    # quiet_clone "eth-cscs"        "alps-cluster-config"
    # quiet_clone "bcumming"        "node-burn"
    # quiet_clone "simonpintarelli" "stackinator-mpich-pkgs"
+   wget https://github.com/libffi/libffi/archive/refs/tags/v3.3.tar.gz && mv v3.3.tar.gz libffi-3.3.tar.gz
+   for pv in "3.6.15" "3.10.12"
+   do
+       wget https://www.python.org/ftp/python/$pv/Python-$pv.tgz
+   done
 popd
 
 header "downloading the bootstrap python dependencies"

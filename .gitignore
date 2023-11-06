@@ -4,5 +4,8 @@ build
 log*
 work
 wip
+tmp
+install
+build-cache
 
 .*.sw[poqnm]

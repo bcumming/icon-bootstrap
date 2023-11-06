@@ -1,7 +1,0 @@
-name: basic-tools
-spack:
-  commit: v0.20.2
-  repo: https://github.com/spack/spack.git
-store: /user-environment
-description: some basic tools for getting things bootstrapped
-
